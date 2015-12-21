@@ -26,6 +26,24 @@ trait WebTestAssertionsTrait
 
     protected function assertResponseOk()
     {
-        $this->assertEquals(200, $this->getClient()->getResponse()->getStatusCode());
+        $this->assertStatus(200, 205);
+    }
+
+    protected function assertResponseError()
+    {
+        $this->assertStatus(400, 417);
+    }
+
+    protected function assertResponseFailure()
+    {
+        $this->assertStatus(500, 505);
+    }
+
+    private function assertStatus($min, $max, $message = null)
+    {
+        $status = $this->getClient()->getResponse()->getStatusCode();
+
+        $this->assertGreaterThanOrEqual($min, $status, $message);
+        $this->assertLessThanOrEqual($max, $status, $message);
     }
 }
