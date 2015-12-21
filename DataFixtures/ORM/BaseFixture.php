@@ -26,7 +26,7 @@ abstract class BaseFixture extends AbstractFixture implements ContainerAwareInte
         return $this->getContainer()->get('doctrine')->getManager();
     }
 
-    public function persistEntity($entity)
+    public function replaceMetadata($entity)
     {
         $manager = $this->getManager();
         $metadata = $manager->getClassMetaData(get_class($entity));
@@ -34,20 +34,25 @@ abstract class BaseFixture extends AbstractFixture implements ContainerAwareInte
         if ($metadata->generatorType === ClassMetadata::GENERATOR_TYPE_UUID) {
             $metadata->setIdGenerator(new UuidGenerator());
         }
+    }
 
+    public function persistEntity($entity)
+    {
+        $manager = $this->getManager();
+        $this->replaceMetadata($entity);
         $manager->persist($entity);
     }
 
     public function mapEntityData($entity, $data)
     {
         $manager = $this->getManager();
+        $metadata = $manager->getClassMetaData(get_class($entity));
 
         foreach ($data as $key => $value) {
             if ($value instanceof Reference) {
                 $value = $this->getReference($value->getId());
             }
 
-            $metadata = $manager->getClassMetaData(get_class($entity));
             $metadata->setFieldValue($entity, $key, $value);
         }
 

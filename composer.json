@@ -3,16 +3,25 @@
     "description": "This bundle provides additional test tools for Symfony 2 applications",
     "type": "symfony-bundle",
     "license": "MIT",
+    "homepage": "http://www.noregression.nl",
     "authors": [
         {
             "name": "NoRegression",
             "email": "info@noregression.nl"
         }
     ],
-    "require": {},
     "autoload": {
         "psr-4": {
             "NoRegression\\TestBundle\\": ""
-        }
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "require": {
+        "doctrine/orm": "^2.5",
+        "doctrine/common": "~2.5",
+        "doctrine/data-fixtures": "^1.1",
+        "symfony/dependency-injection": "^3.0"
     }
 }

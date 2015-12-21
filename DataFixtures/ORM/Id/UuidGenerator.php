@@ -20,7 +20,7 @@ class UuidGenerator extends BaseUuidGenerator
             $value = $class->getFieldValue($entity, $idField);
 
             if (!isset($value)) {
-                $value = parent::generate($em, $entity);
+                $value = $this->getGeneratedValue($em, $entity);
             }
 
             $identifier[$idField] = $value;
@@ -28,5 +28,10 @@ class UuidGenerator extends BaseUuidGenerator
         }
 
         return $value;
+    }
+
+    public function getGeneratedValue(EntityManager $em, $entity)
+    {
+        return parent::generate($em, $entity);
     }
 }
