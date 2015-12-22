@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "12a56d1aca02a7e8810c4ce5fb9718d6",
-    "content-hash": "e75456300b9272feac5cbfcc09658c62",
+    "hash": "7d43f3450ada1d82da101775dc5e629e",
+    "content-hash": "70659f04998e3eb12fbb13c4dd0f9017",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -843,16 +843,16 @@
     "packages-dev": [
         {
             "name": "codeclimate/php-test-reporter",
-            "version": "v0.1.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeclimate/php-test-reporter.git",
-                "reference": "8ed24ff30f3663ecf40f1c12d6c97eb56c69e646"
+                "reference": "02790d733f9eb43d0a5981962c41846092fb387f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/8ed24ff30f3663ecf40f1c12d6c97eb56c69e646",
-                "reference": "8ed24ff30f3663ecf40f1c12d6c97eb56c69e646",
+                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/02790d733f9eb43d0a5981962c41846092fb387f",
+                "reference": "02790d733f9eb43d0a5981962c41846092fb387f",
                 "shasum": ""
             },
             "require": {
@@ -862,6 +862,7 @@
                 "symfony/console": ">=2.0"
             },
             "require-dev": {
+                "ext-xdebug": "*",
                 "phpunit/phpunit": "3.7.*@stable"
             },
             "bin": [
@@ -870,7 +871,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.1.x-dev"
+                    "dev-master": "0.2.x-dev"
                 }
             },
             "autoload": {
@@ -896,7 +897,7 @@
                 "codeclimate",
                 "coverage"
             ],
-            "time": "2014-07-23 13:42:41"
+            "time": "2015-12-17 00:52:54"
         },
         {
             "name": "guzzle/guzzle",
@@ -2207,7 +2208,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "codeclimate/php-test-reporter": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
